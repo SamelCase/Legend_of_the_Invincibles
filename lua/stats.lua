@@ -78,9 +78,8 @@ function wesnoth.update_stats(original)
 		table.insert(visible_modifications, { "trait", { id = "geared", name = _"GEARED", description = _"Geared: This unit is equipped with items. This is just to easily identify it on the recall list."}})
 	end
 	if not has_legacy and original.race ~= "undead" then
-		local seed = get_random_seed_from_unit(original)
-		local index = seed % #loti.legacy_list
-		table.insert(visible_modifications, { "advancement", { id = loti.legacy_list[index + 1] }})
+		local index = wesnoth.random(#loti.legacy_list)
+		table.insert(visible_modifications, { "advancement", { id = loti.legacy_list[index] }})
 	end
 
 	-- Remove objects providing visual effects
